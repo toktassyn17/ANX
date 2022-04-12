@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load utility_tags %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Все объявления</h1>
+        {% for el in tasks %}
+            <div class = "alert alert-warning mt-2" style="background-color: darkgray; outline: 2px solid #000 ">
+                <h3 style="color: black"> {{ el.title }}</h3>
+                <p>{{ el.task }}</p>
+            </div>
+        {% endfor %}
+
+<p> Дата и время последнего обновления: {% current_time "%Y-%m-%d %I:%M %p"  %} </p>
+<p>Количество объявлении: {{ tasks|length }}</p>
+{% endblock %}
+{% block footer %}
+{% endblock %}
