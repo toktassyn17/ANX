@@ -4,6 +4,10 @@ from .models import Subscriber
 from .forms import TaskForm
 from .forms import SubscriberForm
 
+def delete(request):
+    tasks = Task.objects.first()
+    tasks.delete()
+    return redirect('home')
 
 def index(request):
     tasks = Task.objects.all()
