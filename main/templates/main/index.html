@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load utility_tags %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+        <div class="head-adv">
+            <h1>Все объявления</h1>
+        </div>
+        {% for el in tasks %}
+<!--            <div class = "alert alert-warning mt-2" style="background-color: darkgray; outline: 2px solid #000 ">-->
+<!--                <h3 style="color: black"> {{ el.title }}</h3>-->
+<!--                <p>{{ el.task }}</p>-->
+<!--            </div>-->
+            <div class="container" >
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card" style="width: 18rem;">
+                          <img src="{{ el.image}}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ el.title }}</h5>
+                            <p class="card-text">{{ el.task }}</p>
+                              <a href = " {% url 'delete' %}" class="btn btn-outline-danger btn-sm" > Delete </a>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+<p> Дата и время последнего обновления: {% current_time "%Y-%m-%d %I:%M %p"  %} </p>
+<p>Количество объявлении: {{ tasks|length }}</p>
+{% endblock %}
+{% block footer %}
+{% endblock %}
